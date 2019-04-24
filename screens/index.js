@@ -13,7 +13,7 @@ export default class Main extends React.Component {
         <AppTitle />
         <View style={styles.mainCarousel}>
           <Carousel
-            entries={["invoice", "balance", "rewards"]}
+            entries={[1, 2, 3]}
             itemWidth={width * 0.9}
             sliderWidth={width}
             hasPagination
