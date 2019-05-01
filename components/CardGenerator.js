@@ -2,20 +2,19 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { AntDesign, Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 
-const CardGenerator = card => {
+const CardGenerator = ({ card }) => {
   console.log(card);
-  return <View />;
-  // return (
-  //   <View style={styles.slide}>
-  //     <View style={styles.slideHeader}>{card.header.icon()}</View>
-  //     <View style={styles.slideBody}>
-  //       {card.body.title()}
-  //       {card.body.value()}
-  //       {card.body.subtitle()}
-  //     </View>
-  //     <View style={styles.slideFooter}>{card.footer()}</View>
-  //   </View>
-  // );
+  return (
+    <View style={styles.slide}>
+      <View style={styles.slideHeader}>{card.header.icon()}</View>
+      <View style={styles.slideBody}>
+        {card.body.title()}
+        {card.body.value()}
+        {card.body.subtitle()}
+      </View>
+      <View style={styles.slideFooter}>{card.footer()}</View>
+    </View>
+  );
 };
 
 export default CardGenerator;
@@ -38,13 +37,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start"
   },
-  bodyTitle: {
-    fontSize: 14
-  },
-  bodyValue: {
-    fontSize: 34
-  },
-  bodyLimit: { fontWeight: "bold" },
   slideFooter: {
     flex: 1,
     backgroundColor: "#eee",
@@ -52,10 +44,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 16
-  },
-  textSlideFooter: {
-    flex: 1,
-    padding: 20,
-    fontSize: 14
   }
 });
