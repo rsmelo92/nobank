@@ -1,10 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
+import { Font } from "expo";
 import Main from "./screens";
 
-export default function App() {
-  return <Main style={styles.container} />;
-}
+const App = () => <Main style={styles.container} />;
+export default App;
 
 const styles = StyleSheet.create({
   container: {

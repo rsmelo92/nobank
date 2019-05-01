@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { AntDesign, Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const CardGenerator = ({ card }) => {
-  console.log(card);
+  // console.log(card);
   return (
     <View style={styles.slide}>
       <View style={styles.slideHeader}>{card.header.icon()}</View>
