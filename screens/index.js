@@ -3,6 +3,7 @@ import { StyleSheet, View, Dimensions, FlatList, Text } from "react-native";
 import AppTitle from "nb/components/AppTitle";
 import BottomCarousel from "nb/components/BottomMenu";
 import CardsSlider from "nb/components/CardsSlider";
+import MenuMain from "nb/components/MenuMain";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -15,8 +16,11 @@ export default class Main extends React.Component {
     return (
       <View style={styles.container}>
         <AppTitle />
-        <View style={styles.mainCarousel}>
+        <View style={styles.menuContent}>
+          <MenuMain />
+          {/* <View style={styles.mainCarousel}>
           <CardsSlider />
+        </View> */}
         </View>
         <View style={styles.bottomCarousel}>
           <BottomCarousel />
@@ -33,8 +37,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
+  menuContent: {
+    height: MAIN_CARD_HEIGHT_CALCULATION,
+    alignItems: "center"
+  },
   mainCarousel: {
-    height: MAIN_CARD_HEIGHT_CALCULATION
+    height: MAIN_CARD_HEIGHT_CALCULATION,
+    position: "absolute"
   },
   bottomCarousel: {
     flex: 1
