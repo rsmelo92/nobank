@@ -6,20 +6,24 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "relay": "relay-compiler --src ./src --schema ./schema.graphql"
+    "download-schema": "node ./relay/download-schema.js",
+    "relay": "relay-compiler --src ./ --schema ./relay/schema.json",
+    "relay:watch": "yarn relay --watch"
   },
   "dependencies": {
     "expo": "^32.0.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-snap-carousel": "^3.7.5",
-    "react-relay": "^4.0.0"
+    "react-relay": "^4.0.0",
+    "relay": "^0.8.0-1"
   },
   "devDependencies": {
     "babel-plugin-relay": "^4.0.0",
     "babel-preset-expo": "^5.0.0",
     "graphql": "^14.2.1",
-    "relay-compiler": "^4.0.0"
+    "relay-compiler": "^4.0.0",
+    "sync-request": "^6.1.0"
   },
   "private": true
 }

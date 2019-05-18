@@ -1,12 +1,14 @@
 import React from "react";
-import { StyleSheet, View, Dimensions } from "react-native";
+import { StyleSheet, View, Dimensions, FlatList, Text } from "react-native";
 import AppTitle from "nb/components/AppTitle";
-import CardGenerator from "nb/components/CardGenerator";
-import Carousel from "nb/components/Carousel";
 import BottomCarousel from "nb/components/BottomMenu";
+import CardsSlider from "nb/components/CardsSlider";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
+
+const MAIN_CARD_HEIGHT_CALCULATION = height * 0.65; // 65% of screen height
+const MAIN_CARD_WIDTH_CALCULATION = width * 0.9; // 90% of screen height
 
 export default class Main extends React.Component {
   render() {
@@ -14,12 +16,7 @@ export default class Main extends React.Component {
       <View style={styles.container}>
         <AppTitle />
         <View style={styles.mainCarousel}>
-          <Carousel
-            entries={[1, 2, 3]}
-            itemWidth={width * 0.9}
-            sliderWidth={width}
-            hasPagination
-          />
+          <CardsSlider />
         </View>
         <View style={styles.bottomCarousel}>
           <BottomCarousel />
@@ -37,7 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   mainCarousel: {
-    height: height * 0.65
+    height: MAIN_CARD_HEIGHT_CALCULATION
   },
   bottomCarousel: {
     flex: 1
