@@ -8,7 +8,7 @@ import MenuMain from "nb/components/MenuMain";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
-const MAIN_CARD_HEIGHT_CALCULATION = height * 0.65; // 65% of screen height
+const MAIN_CARD_HEIGHT_CALCULATION = height * 0.68; // 68% of screen height
 const MAIN_CARD_WIDTH_CALCULATION = width * 0.9; // 90% of screen height
 
 export default class Main extends React.Component {
@@ -16,14 +16,16 @@ export default class Main extends React.Component {
     return (
       <View style={styles.container}>
         <AppTitle />
-        <View style={styles.menuContent}>
-          <MenuMain />
-          {/* <View style={styles.mainCarousel}>
-          <CardsSlider />
-        </View> */}
-        </View>
-        <View style={styles.bottomCarousel}>
-          <BottomCarousel />
+        <MenuMain />
+        <View style={{ position: "absolute", bottom: 0 }}>
+          <View style={styles.menuContent}>
+            <View style={styles.mainCarousel}>
+              <CardsSlider />
+            </View>
+          </View>
+          <View style={styles.bottomCarousel}>
+            <BottomCarousel />
+          </View>
         </View>
       </View>
     );
@@ -34,6 +36,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#6D2177",
+    // backgroundColor: "#841584",
     alignItems: "center",
     justifyContent: "center"
   },
@@ -42,8 +45,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   mainCarousel: {
-    height: MAIN_CARD_HEIGHT_CALCULATION,
-    position: "absolute"
+    height: MAIN_CARD_HEIGHT_CALCULATION
+    // position: "absolute"
   },
   bottomCarousel: {
     flex: 1

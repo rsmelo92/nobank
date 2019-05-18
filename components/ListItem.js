@@ -9,10 +9,9 @@ const ITEM_HEIGHT_CALCULATION = height * 0.65; // 65% of screen height
 const ITEM_WIDTH_CALCULATION = width * 0.9; // 90% of screen height
 
 const ListItem = ({ icon, text }) => {
-  log;
   return (
     <View style={styles.menuItem}>
-      {/* {icon} */}
+      {icon}
       <Text style={styles.menuText}>{text}</Text>
       <Entypo name="chevron-small-right" size={22} color="#fff" />
     </View>
@@ -24,10 +23,11 @@ export default ListItem;
 const styles = StyleSheet.create({
   menuItem: {
     width: ITEM_WIDTH_CALCULATION,
+    minHeight: 44,
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 10,
-    borderTopColor: "#ffffff",
+    borderTopColor: "rgba(255, 255, 255, 0.2)",
     borderTopWidth: 1
   },
   menuText: {

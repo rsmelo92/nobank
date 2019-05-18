@@ -29,6 +29,7 @@ export default BottomMenu;
 const styles = StyleSheet.create({
   menuItemsWrapper: {
     width: 86,
+    minHeight: 90,
     borderRadius: 4,
     backgroundColor: "rgba(255, 255, 255, 0.15)",
     marginHorizontal: 4,

@@ -17,7 +17,6 @@ export default AppTitle;
 
 const styles = StyleSheet.create({
   titleWrapper: {
-    height: 100,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"

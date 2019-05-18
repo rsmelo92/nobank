@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, ScrollView, Button } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 import ListItem from "nb/components/ListItem";
@@ -7,17 +7,26 @@ import ListItem from "nb/components/ListItem";
 const menuItems = [
   {
     text: "Me ajuda",
-    icon: <Feather name="help-circle" size={22} color="#fff" />
+    icon: <Feather name="help-circle" size={20} color="#fff" />
   },
-  { text: "Perfil", icon: "help-circle" },
-  { text: "Configurar NoConta", icon: "help-circle" },
-  { text: "Configurar Cartão", icon: "help-circle" },
-  { text: "Configurações do app", icon: "help-circle" }
+  { text: "Perfil", icon: <Feather name="user" size={20} color="#fff" /> },
+  {
+    text: "Configurar NoConta",
+    icon: <Feather name="dollar-sign" size={18} color="#fff" />
+  },
+  {
+    text: "Configurar Cartão",
+    icon: <Feather name="credit-card" size={18} color="#fff" />
+  },
+  {
+    text: "Configurações do app",
+    icon: <Feather name="smartphone" size={20} color="#fff" />
+  }
 ];
 
 const MenuMain = () => {
   return (
-    <React.Fragment>
+    <ScrollView style={styles.menuList} showsVerticalScrollIndicator={false}>
       <View style={styles.qrCodeWrapper}>
         <QRCode
           size={90}
@@ -40,18 +49,26 @@ const MenuMain = () => {
       </View>
       <View style={styles.menuList}>
         {menuItems.map(({ text, icon }) => (
-          <ListItem icon={icon} text={text} />
+          <ListItem key={`${text}_key`} icon={icon} text={text} />
         ))}
+        <Button onPress={() => {}} title="Sair da conta" color="#841584" />
       </View>
-    </React.Fragment>
+    </ScrollView>
   );
 };
 
 export default MenuMain;
 
 const styles = StyleSheet.create({
+  menuList: {
+    opacity: 0,
+    marginBottom: 18,
+    paddingTop: 30,
+    paddingBottom: 30
+  },
   qrCodeWrapper: {
     backgroundColor: "#ffffff",
+    alignSelf: "center",
     alignItems: "center",
     justifyContent: "center",
     width: 105,
@@ -64,9 +81,6 @@ const styles = StyleSheet.create({
   bankText: {
     color: "#ffffff",
     marginBottom: 4
-  },
-  menuList: {
-    marginTop: 18
   },
   menuItem: {
     flexDirection: "row"
