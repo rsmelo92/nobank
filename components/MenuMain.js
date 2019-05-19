@@ -26,7 +26,6 @@ const menuItems = [
   {
     text: "Configurar NoConta",
     icon: "layers"
-    // icon: "dollar-sign"
   },
   {
     text: "Configurar Cartão",
