@@ -11,7 +11,7 @@ const ITEM_WIDTH_CALCULATION = width * 0.9; // 90% of screen height
 const ListItem = ({ icon, text }) => {
   return (
     <View style={styles.menuItem}>
-      {icon}
+      <Feather name={icon} size={20} color="#fff" />
       <Text style={styles.menuText}>{text}</Text>
       <Entypo name="chevron-small-right" size={22} color="#fff" />
     </View>

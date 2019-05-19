@@ -1,26 +1,40 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView, Button } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  Button,
+  Dimensions
+} from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 import ListItem from "nb/components/ListItem";
 
+const height = Dimensions.get("window").height;
+const ITEM_HEIGHT_CALCULATION = height * 0.65; // 65% of screen height
+
 const menuItems = [
   {
     text: "Me ajuda",
-    icon: <Feather name="help-circle" size={20} color="#fff" />
+    icon: "help-circle"
   },
-  { text: "Perfil", icon: <Feather name="user" size={20} color="#fff" /> },
+  {
+    text: "Perfil",
+    icon: "user"
+  },
   {
     text: "Configurar NoConta",
-    icon: <Feather name="dollar-sign" size={18} color="#fff" />
+    icon: "layers"
+    // icon: "dollar-sign"
   },
   {
     text: "Configurar Cartão",
-    icon: <Feather name="credit-card" size={18} color="#fff" />
+    icon: "credit-card"
   },
   {
     text: "Configurações do app",
-    icon: <Feather name="smartphone" size={20} color="#fff" />
+    icon: "smartphone"
   }
 ];
 
@@ -63,7 +77,8 @@ const styles = StyleSheet.create({
   menuList: {
     marginBottom: 18,
     paddingTop: 30,
-    paddingBottom: 30
+    paddingBottom: 30,
+    height: ITEM_HEIGHT_CALCULATION
   },
   qrCodeWrapper: {
     backgroundColor: "#ffffff",

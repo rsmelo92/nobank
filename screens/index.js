@@ -29,7 +29,6 @@ export default class Main extends React.Component {
   };
 
   animate(toValue) {
-    console.log(!!toValue);
     Animated.parallel([
       Animated.timing(this.state.opacity, {
         toValue,
