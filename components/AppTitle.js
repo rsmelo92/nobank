@@ -1,15 +1,17 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableWithoutFeedback } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 
-const AppTitle = () => {
+const AppTitle = ({ onPress }) => {
   return (
-    <View style={styles.titleWrapper}>
-      <Text style={styles.title}>
-        NO <Text style={styles.name}>Rafael</Text>
-      </Text>
-      <Entypo name="chevron-small-down" size={22} color="#fff" />
-    </View>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={styles.titleWrapper}>
+        <Text style={styles.title}>
+          NO <Text style={styles.name}>Rafael</Text>
+        </Text>
+        <Entypo name="chevron-small-down" size={22} color="#fff" />
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

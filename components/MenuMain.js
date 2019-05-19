@@ -61,7 +61,6 @@ export default MenuMain;
 
 const styles = StyleSheet.create({
   menuList: {
-    opacity: 0,
     marginBottom: 18,
     paddingTop: 30,
     paddingBottom: 30
