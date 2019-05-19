@@ -6,8 +6,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "download-schema": "node ./relay/download-schema.js",
-    "relay": "relay-compiler --src ./ --schema ./relay/schema.json",
+    "download-schema": "graphql get-schema --endpoint https://nugraphql.herokuapp.com/graphql --output relay/schema.graphql",
+    "relay": "relay-compiler --src ./relay --schema ./relay/schema.graphql",
     "relay:watch": "yarn relay --watch"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "babel-plugin-relay": "^4.0.0",
     "babel-preset-expo": "^5.0.0",
     "graphql": "^14.2.1",
+    "graphql-cli": "^3.0.11",
     "relay-compiler": "^4.0.0",
     "sync-request": "^6.1.0"
   },

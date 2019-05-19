@@ -6,9 +6,7 @@ function fetchQuery(operation, variables, cacheConfig, uploadables) {
   return fetch("https://nugraphql.herokuapp.com/graphql", {
     method: "POST",
     headers: {
-      Accept: "application/json",
       "Content-Type": "application/json"
-      // Auth Headers goes here
     },
     body: JSON.stringify({
       query: operation.text, // GraphQL text from input
