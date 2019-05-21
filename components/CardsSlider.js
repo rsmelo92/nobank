@@ -2,23 +2,66 @@ import React, { Component } from "react";
 import { StyleSheet, FlatList, Dimensions, View } from "react-native";
 import CardGenerator from "nb/components/CardGenerator";
 import { cards } from "nb/components/SlidersPayload";
+import { createFragmentContainer, graphql } from "react-relay";
+import createRelayQueryRenderer from "nb/hoc/queryRenderer";
 
 const width = Dimensions.get("window").width;
 const MAIN_CARD_WIDTH_CALCULATION = width * 0.9; // 90% of screen height
 
-export default class CardsSlider extends Component {
+class CardsSlider extends Component {
   render() {
+    console.log(this.props);
+    const {
+      balance,
+      creditCardLimit,
+      invoice,
+      lastAcumulatedPoints,
+      lastPurchase,
+      name,
+      rewardsPoints,
+      suggestionRewards
+    } = this.props.user;
+
     return (
       <FlatList
         horizontal
         keyExtractor={(item, index) => `${item}_${index}`}
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        data={[1, 2, 3]}
+        data={[
+          {
+            bodyData: {
+              invoice,
+              creditCardLimit
+            },
+            footerData: {
+              lastPurchase
+            }
+          },
+          {
+            bodyData: {
+              balance
+            },
+            footerData: {
+              lastPurchase
+            }
+          },
+          {
+            bodyData: {
+              rewardsPoints,
+              lastAcumulatedPoints
+            },
+            footerData: {
+              suggestionRewards
+            }
+          }
+        ]}
         renderItem={({ item, index }) => {
+          console.log("item==>", item);
+
           return (
             <View style={styles.mainItem}>
-              <CardGenerator card={cards[index]} />
+              <CardGenerator card={cards[index]} cardContent={item} />
             </View>
           );
         }}
@@ -26,6 +69,27 @@ export default class CardsSlider extends Component {
     );
   }
 }
+
+const CardsContainer = createFragmentContainer(CardsSlider, {
+  user: graphql`
+    fragment CardsSlider_user on User {
+      id
+      name
+    }
+  `
+});
+
+const CardsQuery = graphql`
+  query CardsSliderQuery {
+    user {
+      ...CardsSlider_user
+    }
+  }
+`;
+
+export default createRelayQueryRenderer(CardsContainer, {
+  query: CardsQuery
+});
 
 const styles = StyleSheet.create({
   mainItem: {

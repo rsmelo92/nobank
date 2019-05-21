@@ -20,25 +20,30 @@ export const cards = [
           FATURA ATUAL
         </Text>
       ),
-      value: () => (
-        <Text style={[styles.bodyValue, { color: "#42bdca" }]}>
-          R$ <Text style={{ fontWeight: "bold" }}>172</Text>,25
-        </Text>
-      ),
-      subtitle: () => (
+      value: ({ invoice }) => {
+        const splitInvoice = invoice.toString().split(".");
+        return (
+          <Text style={[styles.bodyValue, { color: "#42bdca" }]}>
+            R$ <Text style={{ fontWeight: "bold" }}>{splitInvoice[0]}</Text>,
+            {splitInvoice[1]}
+          </Text>
+        );
+      },
+      subtitle: ({ creditCardLimit }) => (
         <Text>
           Limite disponível{" "}
           <Text style={[styles.bodyLimit, { color: "#9dd230" }]}>
-            R$ 146,50
+            R$ {creditCardLimit}.00
           </Text>
         </Text>
       )
     },
-    footer: () => (
+    footer: ({ lastPurchase }) => (
       <React.Fragment>
         <AntDesign name="wallet" size={28} color="#666" />
         <Text style={styles.textSlideFooter}>
-          Compra mais recente em Ifood*Ifood no valor de R$8,00 quinta
+          Compra mais recente em {lastPurchase.company} no valor de R${" "}
+          {lastPurchase.value} quinta
         </Text>
         <Entypo name="chevron-small-right" size={24} color="#666" />
       </React.Fragment>
@@ -50,7 +55,9 @@ export const cards = [
     },
     body: {
       title: () => <Text style={styles.bodyTitle}>Saldo disponível</Text>,
-      value: () => <Text style={styles.bodyValue}>R$ 3.132,00</Text>,
+      value: ({ balance }) => (
+        <Text style={styles.bodyValue}>R$ {balance}</Text>
+      ),
       subtitle: () => {}
     },
     footer: () => (
@@ -69,26 +76,27 @@ export const cards = [
     },
     body: {
       title: () => null,
-      value: () => (
+      value: ({ rewardsPoints }) => (
         <Text style={[styles.bodyValue, { color: "#8f56c8" }]}>
-          <Text style={{ fontWeight: "bold" }}>28.485</Text> pts
+          <Text style={{ fontWeight: "bold" }}>{rewardsPoints}</Text> pts
         </Text>
       ),
-      subtitle: () => (
+      subtitle: ({ lastAcumulatedPoints }) => (
         <Text style={{ maxWidth: 200 }}>
           Você acumulou{" "}
           <Text style={[styles.bodyLimit, { color: "#8f56c8" }]}>
-            2.248 pontos
+            {lastAcumulatedPoints} pontos
           </Text>{" "}
           nos últimos 30 dias
         </Text>
       )
     },
-    footer: () => (
+    footer: ({ suggestionRewards }) => (
       <React.Fragment>
         <Feather name="briefcase" size={28} color="#666" />
         <Text style={styles.textSlideFooter}>
-          Apagar compra de R$ 268,53 em Brasil Airlines com 26.350pts
+          Apagar compra de R$ {suggestionRewards.value} em Brasil Airlines com{" "}
+          {suggestionRewards.points}pts
         </Text>
         <Entypo name="chevron-small-right" size={24} color="#666" />
       </React.Fragment>
@@ -126,6 +134,6 @@ const styles = StyleSheet.create({
   textSlideFooter: {
     flex: 1,
     padding: 20,
-    fontSize: 14
+    fontSize: 13
   }
 });

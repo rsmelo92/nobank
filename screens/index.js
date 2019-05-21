@@ -7,15 +7,13 @@ import {
   Text,
   Animated
 } from "react-native";
-import GestureRecognizer, {
-  swipeDirections
-} from "react-native-swipe-gestures";
-
 import AppTitle from "nb/components/AppTitle";
 import BottomCarousel from "nb/components/BottomMenu";
 import CardsSlider from "nb/components/CardsSlider";
 import MenuMain from "nb/components/MenuMain";
-import createRelayQueryRenderer from "nb/hoc/queryRenderer";
+import GestureRecognizer, {
+  swipeDirections
+} from "react-native-swipe-gestures";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -23,7 +21,7 @@ const height = Dimensions.get("window").height;
 const MAIN_CARD_HEIGHT_CALCULATION = height * 0.68; // 68% of screen height
 const MAIN_CARD_WIDTH_CALCULATION = width * 0.9; // 90% of screen height
 
-class Main extends React.Component {
+export default class Main extends React.Component {
   state = {
     opacity: new Animated.Value(0),
     opacityBottom: new Animated.Value(1),
@@ -51,12 +49,9 @@ class Main extends React.Component {
 
   render() {
     const { opacity, opacityBottom, translateY } = this.state;
-    const { user } = this.props;
-    console.log("props main", this.props);
-
     return (
       <View style={styles.container}>
-        <AppTitle userName={user.name} />
+        <AppTitle />
         <Animated.View style={[styles.mainMenu, { opacity }]}>
           <MenuMain />
         </Animated.View>
@@ -86,8 +81,6 @@ class Main extends React.Component {
     );
   }
 }
-
-export default createRelayQueryRenderer(Main);
 
 const styles = StyleSheet.create({
   container: {

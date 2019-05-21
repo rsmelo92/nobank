@@ -1,15 +1,15 @@
 import React from "react";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 
-const CardGenerator = ({ card }) => (
+const CardGenerator = ({ card, cardContent: { bodyData, footerData } }) => (
   <View style={styles.slide}>
     <View style={styles.slideHeader}>{card.header.icon()}</View>
     <View style={styles.slideBody}>
       {card.body.title()}
-      {card.body.value()}
-      {card.body.subtitle()}
+      {card.body.value(bodyData)}
+      {card.body.subtitle(bodyData)}
     </View>
-    <View style={styles.slideFooter}>{card.footer()}</View>
+    <View style={styles.slideFooter}>{card.footer(footerData)}</View>
   </View>
 );
 
