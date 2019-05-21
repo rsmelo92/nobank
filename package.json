@@ -6,8 +6,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "download-schema": "graphql get-schema --endpoint https://nugraphql.herokuapp.com/graphql --output relay/schema.graphql",
-    "relay": "relay-compiler --src ./relay --schema ./relay/schema.graphql",
+    "download-schema": "graphql get-schema --json --endpoint https://nugraphql.herokuapp.com/graphql --output relay/schema.json",
+    "relay": "relay-compiler --src ./ --schema ./relay/schema.graphql",
     "relay:watch": "yarn relay --watch"
   },
   "dependencies": {

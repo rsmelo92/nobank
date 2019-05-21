@@ -7,13 +7,15 @@ import {
   Text,
   Animated
 } from "react-native";
+import GestureRecognizer, {
+  swipeDirections
+} from "react-native-swipe-gestures";
+
 import AppTitle from "nb/components/AppTitle";
 import BottomCarousel from "nb/components/BottomMenu";
 import CardsSlider from "nb/components/CardsSlider";
 import MenuMain from "nb/components/MenuMain";
-import GestureRecognizer, {
-  swipeDirections
-} from "react-native-swipe-gestures";
+import QueryRendererHOC from "nb/hoc/queryRenderer";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -50,34 +52,35 @@ export default class Main extends React.Component {
   render() {
     const { opacity, opacityBottom, translateY } = this.state;
     return (
-      <View style={styles.container}>
-        <AppTitle />
-        <Animated.View style={[styles.mainMenu, { opacity }]}>
-          <MenuMain />
-        </Animated.View>
-        <GestureRecognizer
-          onSwipeUp={state => this.animate(0)}
-          onSwipeDown={state => this.animate(1)}
-          config={{
-            velocityThreshold: 0.3,
-            directionalOffsetThreshold: 80
-          }}
-          style={styles.cardsGestureWrapper}
-        >
-          <View style={styles.menuContent}>
-            <Animated.View
-              style={[styles.mainCarousel, { transform: [{ translateY }] }]}
-            >
-              <CardsSlider />
-            </Animated.View>
-          </View>
-          <Animated.View
-            style={[styles.bottomCarousel, { opacity: opacityBottom }]}
-          >
-            <BottomCarousel />
-          </Animated.View>
-        </GestureRecognizer>
-      </View>
+      <QueryRendererHOC />
+      // <View style={styles.container}>
+      //   <AppTitle />
+      //   <Animated.View style={[styles.mainMenu, { opacity }]}>
+      //     <MenuMain />
+      //   </Animated.View>
+      //   <GestureRecognizer
+      //     onSwipeUp={state => this.animate(0)}
+      //     onSwipeDown={state => this.animate(1)}
+      //     config={{
+      //       velocityThreshold: 0.3,
+      //       directionalOffsetThreshold: 80
+      //     }}
+      //     style={styles.cardsGestureWrapper}
+      //   >
+      //     <View style={styles.menuContent}>
+      //       <Animated.View
+      //         style={[styles.mainCarousel, { transform: [{ translateY }] }]}
+      //       >
+      //         <CardsSlider />
+      //       </Animated.View>
+      //     </View>
+      //     <Animated.View
+      //       style={[styles.bottomCarousel, { opacity: opacityBottom }]}
+      //     >
+      //       <BottomCarousel />
+      //     </Animated.View>
+      //   </GestureRecognizer>
+      // </View>
     );
   }
 }
