@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Font } from "expo";
-import Main from "./screens";
+import Main from "./screens/MainScreen";
 
 const App = () => <Main style={styles.container} />;
 export default App;

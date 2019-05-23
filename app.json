@@ -11,12 +11,12 @@
     "primaryColor": "#ce54da",
     "androidStatusBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#6D2177"
+      "backgroundColor": "#841584"
     },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#841584"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

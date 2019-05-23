@@ -7,27 +7,7 @@ function createRelayQueryRenderer(Container, config) {
   return renderProps => (
     <QueryRenderer
       environment={environment}
-      query={graphql`
-        query queryRendererQuery {
-          user {
-            id
-            name
-            invoice
-            creditCardLimit
-            lastPurchase {
-              company
-              value
-            }
-            balance
-            rewardsPoints
-            lastAcumulatedPoints
-            suggestionRewards {
-              value
-              points
-            }
-          }
-        }
-      `}
+      query={config.query}
       variables={{}}
       render={({ error, props }) => {
         if (error) {

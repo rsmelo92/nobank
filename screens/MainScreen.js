@@ -14,6 +14,9 @@ import MenuMain from "nb/components/MenuMain";
 import GestureRecognizer, {
   swipeDirections
 } from "react-native-swipe-gestures";
+import createRelayQueryRenderer from "nb/hoc/queryRenderer";
+
+import { graphql, createFragmentContainer } from "react-relay";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -21,7 +24,7 @@ const height = Dimensions.get("window").height;
 const MAIN_CARD_HEIGHT_CALCULATION = height * 0.68; // 68% of screen height
 const MAIN_CARD_WIDTH_CALCULATION = width * 0.9; // 90% of screen height
 
-export default class Main extends React.Component {
+class Main extends React.Component {
   state = {
     opacity: new Animated.Value(0),
     opacityBottom: new Animated.Value(1),
@@ -49,9 +52,11 @@ export default class Main extends React.Component {
 
   render() {
     const { opacity, opacityBottom, translateY } = this.state;
+    const { name } = this.props.user;
+
     return (
       <View style={styles.container}>
-        <AppTitle />
+        <AppTitle userName={name} />
         <Animated.View style={[styles.mainMenu, { opacity }]}>
           <MenuMain />
         </Animated.View>
@@ -82,11 +87,22 @@ export default class Main extends React.Component {
   }
 }
 
+export default createRelayQueryRenderer(Main, {
+  query: graphql`
+    query MainScreenQuery {
+      user {
+        name
+        ...CardsSlider_user
+      }
+    }
+  `
+});
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#6D2177",
-    // backgroundColor: "#841584",
+    // backgroundColor: "#6D2177",
+    backgroundColor: "#841584",
     alignItems: "center",
     justifyContent: "center"
   },
