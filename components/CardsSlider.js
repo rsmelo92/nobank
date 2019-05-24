@@ -16,6 +16,7 @@ class CardsSlider extends Component {
       invoice,
       lastAcumulatedPoints,
       lastPurchase,
+      transfer,
       rewardsPoints,
       suggestionRewards
     } = this.props.user;
@@ -40,7 +41,7 @@ class CardsSlider extends Component {
               balance
             },
             footerData: {
-              lastPurchase
+              transfer
             }
           },
           {
@@ -70,6 +71,10 @@ const CardsSliderContainer = createFragmentContainer(CardsSlider, {
       creditCardLimit
       lastPurchase {
         company
+        value
+      }
+      transfer {
+        name
         value
       }
       balance

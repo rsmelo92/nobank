@@ -33,7 +33,7 @@ export const cards = [
         <Text>
           Limite disponível{" "}
           <Text style={[styles.bodyLimit, { color: "#9dd230" }]}>
-            R$ {creditCardLimit}.00
+            R$ {creditCardLimit}
           </Text>
         </Text>
       )
@@ -60,11 +60,11 @@ export const cards = [
       ),
       subtitle: () => {}
     },
-    footer: () => (
+    footer: ({ transfer }) => (
       <React.Fragment>
         <Entypo name="cycle" size={28} color="#666" />
         <Text style={styles.textSlideFooter}>
-          Transferência de R$ 260,00 feita para Zézé da souza sábado
+          Transferência de R$ {transfer.value} feita para {transfer.name} sábado
         </Text>
         <Entypo name="chevron-small-right" size={24} color="#666" />
       </React.Fragment>

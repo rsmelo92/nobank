@@ -64,7 +64,7 @@ const MenuMain = () => {
         {menuItems.map(({ text, icon }) => (
           <ListItem key={`${text}_key`} icon={icon} text={text} />
         ))}
-        <Button onPress={() => {}} title="Sair da conta" color="#841584" />
+        <Button onPress={() => {}} title="Sair da conta" color="#6D2177" />
       </View>
     </ScrollView>
   );

@@ -13,9 +13,13 @@ declare export opaque type CardsSlider_user$ref: FragmentReference;
 declare export opaque type CardsSlider_user$fragmentType: CardsSlider_user$ref;
 export type CardsSlider_user = {|
   +invoice: number,
-  +creditCardLimit: number,
+  +creditCardLimit: string,
   +lastPurchase: {|
     +company: string,
+    +value: number,
+  |},
+  +transfer: {|
+    +name: string,
     +value: number,
   |},
   +balance: number,
@@ -84,6 +88,25 @@ return {
       ]
     },
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "transfer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Transfer",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "name",
+          "args": null,
+          "storageKey": null
+        },
+        (v0/*: any*/)
+      ]
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
       "name": "balance",
@@ -127,5 +150,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '295fd227f8475f4945508a68c83f8160';
+(node/*: any*/).hash = 'f2e15be2824e0f8596d199a6779c5096';
 module.exports = node;

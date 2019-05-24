@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d9862da5c0b0b9670a8ff0e1b69ee3e6
+ * @relayHash 368944375ad4ab3f59058adaf4905d69
  */
 
 /* eslint-disable */
@@ -38,6 +38,10 @@ fragment CardsSlider_user on User {
   creditCardLimit
   lastPurchase {
     company
+    value
+  }
+  transfer {
+    name
     value
   }
   balance
@@ -142,6 +146,19 @@ return {
             ]
           },
           {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "transfer",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Transfer",
+            "plural": false,
+            "selections": [
+              (v0/*: any*/),
+              (v1/*: any*/)
+            ]
+          },
+          {
             "kind": "ScalarField",
             "alias": null,
             "name": "balance",
@@ -196,7 +213,7 @@ return {
     "operationKind": "query",
     "name": "MainScreenQuery",
     "id": null,
-    "text": "query MainScreenQuery {\n  user {\n    name\n    ...CardsSlider_user\n    id\n  }\n}\n\nfragment CardsSlider_user on User {\n  invoice\n  creditCardLimit\n  lastPurchase {\n    company\n    value\n  }\n  balance\n  rewardsPoints\n  lastAcumulatedPoints\n  suggestionRewards {\n    value\n    points\n  }\n}\n",
+    "text": "query MainScreenQuery {\n  user {\n    name\n    ...CardsSlider_user\n    id\n  }\n}\n\nfragment CardsSlider_user on User {\n  invoice\n  creditCardLimit\n  lastPurchase {\n    company\n    value\n  }\n  transfer {\n    name\n    value\n  }\n  balance\n  rewardsPoints\n  lastAcumulatedPoints\n  suggestionRewards {\n    value\n    points\n  }\n}\n",
     "metadata": {}
   }
 };
