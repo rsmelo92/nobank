@@ -19,8 +19,6 @@ class CardsSlider extends Component {
       rewardsPoints,
       suggestionRewards
     } = this.props.user;
-    console.log(this.props);
-
     return (
       <FlatList
         horizontal
