@@ -52,13 +52,10 @@ class Main extends React.Component {
 
   render() {
     const { opacity, opacityBottom, translateY } = this.state;
-    const { name } = this.props.user;
-    console.log("===>CardsSlider", CardsSlider);
-    console.log(this.props.user);
-
+    const { user } = this.props;
     return (
       <View style={styles.container}>
-        <AppTitle userName={name} />
+        <AppTitle userName={user.name} />
         <Animated.View style={[styles.mainMenu, { opacity }]}>
           <MenuMain />
         </Animated.View>
@@ -75,7 +72,7 @@ class Main extends React.Component {
             <Animated.View
               style={[styles.mainCarousel, { transform: [{ translateY }] }]}
             >
-              <CardsSlider />
+              <CardsSlider user={user} />
             </Animated.View>
           </View>
           <Animated.View
