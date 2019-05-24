@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 const CardGenerator = ({ card, cardContent: { bodyData, footerData } }) => (
   <View style={styles.slide}>

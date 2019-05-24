@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, Image, Dimensions } from "react-native";
 import { graphql, QueryRenderer } from "react-relay";
 import environment from "nb/relay/environment";
+import splash from "nb/assets/splash.png";
+
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
 
 function createRelayQueryRenderer(Container, config) {
   return renderProps => (
@@ -14,7 +18,7 @@ function createRelayQueryRenderer(Container, config) {
           return <Text>Error!</Text>;
         }
         if (!props) {
-          return <Text>Loading...</Text>;
+          return <Image style={{ width, height }} source={splash} />;
         }
         return <Container {...props} />;
       }}

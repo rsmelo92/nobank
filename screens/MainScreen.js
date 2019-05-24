@@ -53,6 +53,8 @@ class Main extends React.Component {
   render() {
     const { opacity, opacityBottom, translateY } = this.state;
     const { name } = this.props.user;
+    console.log("===>CardsSlider", CardsSlider);
+    console.log(this.props.user);
 
     return (
       <View style={styles.container}>

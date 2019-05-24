@@ -10,15 +10,15 @@ const MAIN_CARD_WIDTH_CALCULATION = width * 0.9; // 90% of screen height
 
 class CardsSlider extends Component {
   render() {
-    // const {
-    //   balance,
-    //   creditCardLimit,
-    //   invoice,
-    //   lastAcumulatedPoints,
-    //   lastPurchase,
-    //   rewardsPoints,
-    //   suggestionRewards
-    // } = this.props.user;
+    const {
+      balance,
+      creditCardLimit,
+      invoice,
+      lastAcumulatedPoints,
+      lastPurchase,
+      rewardsPoints,
+      suggestionRewards
+    } = this.props.user;
     console.log(this.props);
 
     return (
@@ -27,34 +27,34 @@ class CardsSlider extends Component {
         keyExtractor={(item, index) => `${item}_${index}`}
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        // data={[
-        //   {
-        //     bodyData: {
-        //       invoice,
-        //       creditCardLimit
-        //     },
-        //     footerData: {
-        //       lastPurchase
-        //     }
-        //   },
-        //   {
-        //     bodyData: {
-        //       balance
-        //     },
-        //     footerData: {
-        //       lastPurchase
-        //     }
-        //   },
-        //   {
-        //     bodyData: {
-        //       rewardsPoints,
-        //       lastAcumulatedPoints
-        //     },
-        //     footerData: {
-        //       suggestionRewards
-        //     }
-        //   }
-        // ]}
+        data={[
+          {
+            bodyData: {
+              invoice,
+              creditCardLimit
+            },
+            footerData: {
+              lastPurchase
+            }
+          },
+          {
+            bodyData: {
+              balance
+            },
+            footerData: {
+              lastPurchase
+            }
+          },
+          {
+            bodyData: {
+              rewardsPoints,
+              lastAcumulatedPoints
+            },
+            footerData: {
+              suggestionRewards
+            }
+          }
+        ]}
         renderItem={({ item, index }) => (
           <View style={styles.mainItem}>
             <CardGenerator card={cards[index]} cardContent={item} />
