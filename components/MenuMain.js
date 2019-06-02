@@ -10,6 +10,7 @@ import {
 import QRCode from "react-native-qrcode-svg";
 import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 import ListItem from "nb/components/ListItem";
+import HalfBold from "nb/components/HalfBold";
 
 const height = Dimensions.get("window").height;
 const ITEM_HEIGHT_CALCULATION = height * 0.65; // 65% of screen height
@@ -49,16 +50,13 @@ const MenuMain = () => {
         />
       </View>
       <View style={styles.textsWrapper}>
-        <Text style={styles.bankText}>
-          Banco{" "}
-          <Text style={{ fontWeight: "bold" }}>260 - No Pagamentos S.A.</Text>
-        </Text>
-        <Text style={styles.bankText}>
-          Agência <Text style={{ fontWeight: "bold" }}>0001</Text>
-        </Text>
-        <Text style={styles.bankText}>
-          Conta <Text style={{ fontWeight: "bold" }}>6687657-5</Text>
-        </Text>
+        <HalfBold
+          style={styles.bankText}
+          text="Banco"
+          boldText="260 - No Pagamentos S.A."
+        />
+        <HalfBold style={styles.bankText} text="Agência" boldText="0001" />
+        <HalfBold style={styles.bankText} text="Conta" boldText="6687657-5" />
       </View>
       <View style={styles.menuList}>
         {menuItems.map(({ text, icon }) => (

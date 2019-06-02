@@ -7,6 +7,8 @@ import {
   Octicons,
   Feather
 } from "@expo/vector-icons";
+import HalfBold from "nb/components/HalfBold";
+
 export const cards = [
   {
     header: {
@@ -23,19 +25,22 @@ export const cards = [
       value: ({ invoice }) => {
         const splitInvoice = invoice.toString().split(".");
         return (
-          <Text style={[styles.bodyValue, { color: "#42bdca" }]}>
-            R$ <Text style={{ fontWeight: "bold" }}>{splitInvoice[0]}</Text>,
-            {splitInvoice[1]}
-          </Text>
+          <React.Fragment>
+            <HalfBold
+              style={[styles.bodyValue, { color: "#42bdca" }]}
+              text="R$"
+              boldText={splitInvoice[0]}
+            />
+            <Text>{splitInvoice[1]}</Text>
+          </React.Fragment>
         );
       },
       subtitle: ({ creditCardLimit }) => (
-        <Text>
-          Limite disponível{" "}
-          <Text style={[styles.bodyLimit, { color: "#9dd230" }]}>
-            R$ {creditCardLimit}
-          </Text>
-        </Text>
+        <HalfBold
+          text="Limite disponível"
+          boldText={`R$ ${creditCardLimit}`}
+          boldStyle={{ color: "#9dd230" }}
+        />
       )
     },
     footer: ({ lastPurchase }) => (
